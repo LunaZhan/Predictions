@@ -46,7 +46,7 @@ yrbss |>
   group_by(Grade, Gender) |> 
   summarise(mean_physical = mean(Physically_active_7d, na.rm = T))
 
-
+## viewing a summary of the data distribution
 yrbss |> 
   ggplot(aes(y = Physically_active_7d, x  = Grade, fill = Gender)) + 
   geom_point() + 
@@ -66,10 +66,11 @@ title = str_wrap("Physical Activity within YRBSS by Grade and Gender"))
 # Ensure that the figure is clearly labeled and includes an appropriate legend
 
 dat_fem12 <- yrbss |> filter(Grade == "12" & Gender == "Female")
-# 1. Calculate the correlation coefficient value manually
+
+#checking correlation between 2 vars
 r_value <- round(cor(dat_fem12$Physically_active_7d, dat_fem12$BMI,  use = "pairwise.complete.obs", method = "pearson"), 2)
 
-# 2. Build the plot
+# plot physical vs BMI
 ggplot(dat_fem12, aes(x = Physically_active_7d, y = BMI)) +
   geom_point(color = "black", size = 1) +            # Add scatter points
   geom_smooth(method = "lm", color = "red", se = FALSE) + # Add linear trendline
