@@ -57,7 +57,8 @@ aggregate(Physically_active_7d ~ Grade + Gender, data = yrbss, FUN = mean) |>
   ggplot(aes(y = Physically_active_7d, x  = Grade, color = Gender, group = Gender)) + 
   geom_line() +
   theme_minimal() + 
-  labs( y = "# days physically active per week", main = "Physical Activity within YRBSS by Grade and Gender")
+  labs( y = "# days physically active per week", 
+title = str_wrap("Physical Activity within YRBSS by Grade and Gender"))
 
 
 # Create a plot that shows the relationship betwen physical activity and bmi
@@ -73,4 +74,4 @@ ggplot(dat_fem12, aes(x = Physically_active_7d, y = BMI)) +
   geom_point(color = "black", size = 1) +            # Add scatter points
   geom_smooth(method = "lm", color = "red", se = FALSE) + # Add linear trendline
   theme_minimal() +
-  labs(main = "Association Between Physical Activity and BMI of Grade 12 Females within YRBSS")
+  labs(title = str_wrap("Association Between Physical Activity and BMI of Grade 12 Females within YRBSS"))
